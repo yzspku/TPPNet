@@ -16,7 +16,7 @@ from utility import *
 
 def train(**kwargs):
     parallel = True
-    opt.feature, opt.model, opt.notes = 'cqt', 'CQTTPPNet',''
+    opt.model, opt.notes = 'CQTTPPNet','single_train'
     opt.load_latest=False
     data_length = 400
     opt._parse(kwargs)
@@ -101,10 +101,9 @@ def train(**kwargs):
 # multi_size train
 def multi_train(**kwargs):
     parallel = True 
-    opt.model = None
-    opt.feature = 'CQTTPPNet'
+    opt.model = 'CQTTPPNet'
     opt.notes='Train_Val'
-    opt.batch_size=64
+    opt.batch_size=32
     #opt.load_latest=True
     #opt.load_model_path = ''
     opt._parse(kwargs)
@@ -361,8 +360,7 @@ def multi_test(**kwargs):
     opt.num_workers=1
     opt.model = 'CQTSPPNet10'
     opt.load_latest = False
-    opt.feature = 'cqt'
-    opt.load_model_path = ''
+    opt.load_model_path = None
     opt._parse(kwargs)
     model = getattr(models, opt.model)() 
     if opt.load_latest is True:
