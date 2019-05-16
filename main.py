@@ -318,10 +318,9 @@ def test(**kwargs):
     opt.num_workers=1
     opt.model = 'CQTTPPNet'
     opt.load_latest = False
-    opt.feature = 'cqt'
     opt.load_model_path = 'check_points/best.pth'
     opt._parse(kwargs)
-        
+    
     model = getattr(models, opt.model)() 
     #print(model)
     if opt.load_latest is True:
@@ -329,17 +328,13 @@ def test(**kwargs):
     elif opt.load_model_path:
         model.load(opt.load_model_path)
     model.to(opt.device)
-    if opt.feature == 'hpcp':
-        val_data350 = HPCP('songs350', out_length=None)
-        val_data80 = HPCP('songs80', out_length=None)
-        val_data2000 = HPCP('songs2000', out_length=None)
-    elif opt.feature == 'cqt': 
-        val_data350 = CQT('songs350', out_length=None)
-        val_data80 = CQT('songs80', out_length=None)
-        val_data = CQT('val', out_length=None)
-        test_data = CQT('test', out_length=None)
-        val_data2000 = CQT('songs2000', out_length=None)
-        val_datatMazurkas = CQT('Mazurkas', out_length=None)
+
+    val_data350 = CQT('songs350', out_length=None)
+    val_data80 = CQT('songs80', out_length=None)
+    val_data = CQT('val', out_length=None)
+    test_data = CQT('test', out_length=None)
+    val_data2000 = CQT('songs2000', out_length=None)
+    val_datatMazurkas = CQT('Mazurkas', out_length=None)
     val_dataloader = DataLoader(val_data, 1, shuffle=False,num_workers=1)
     test_dataloader = DataLoader(test_data, 1, shuffle=False,num_workers=1)
     val_dataloader80 = DataLoader(val_data80, 1, shuffle=False, num_workers=1)
