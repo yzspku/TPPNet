@@ -3,19 +3,15 @@ import warnings
 import torch as t
 
 class DefaultConfig(object):
-    #env = 'default'  # visdom 环境
-    #vis_port =8097 # visdom 端口
-    model = 'CQTSPPNet10'  # 使用的模型，名字必须与models/__init__.py中的名字一致
+
+    model = 'CQTTPPNet'  # 使用的模型，名字必须与models/__init__.py中的名字一致
     feature = 'cqt'
     load_model_path = None  # 加载预训练的模型的路径，为None代表不加载
     load_latest = False
     batch_size = 128  # batch size
     use_gpu = True  # user GPU or not
     num_workers = 4  # how many workers for loading data
-    #print_freq = 600  # print info every N batch
 
-    #debug_file = '/tmp/debug'  # if os.path.exists(debug_file): enter ipdb
-    #result_file = 'result.csv'
 
     max_epoch = 100
     lr = 0.001  # initial learning rate
