@@ -1,5 +1,6 @@
 # TPPNet
-Temporal Pyramid Pooling Convolutional Neural Network for Cover Song Identification
+Temporal Pyramid Pooling Convolutional Neural Network for Cover Song Identification [IJCAI2019]
+https://www.ijcai.org/proceedings/2019/673
 
 ## Environment
 python  --  3
